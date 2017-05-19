@@ -17,4 +17,15 @@ public class Time {
         long seconds = secondsPassed % 60;
         System.out.println("It is: " + hours + ":" + minutes + ":" + seconds);
     }
+
+    public static int getPassedSecondsFromMidnight() {
+        Calendar c = getInstance();
+        long now = c.getTimeInMillis();
+        c.set(HOUR_OF_DAY, 0);
+        c.set(MINUTE, 0);
+        c.set(SECOND, 0);
+        c.set(MILLISECOND, 0);
+        long passed = now - c.getTimeInMillis();
+        return (int) (passed / 1000);
+    }
 }
