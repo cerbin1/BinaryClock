@@ -2,7 +2,7 @@ import java.util.Calendar;
 
 import static java.util.Calendar.*;
 
-public class Time {
+public class Clock {
     void displayTime() {
         Calendar c = getInstance();
         long now = c.getTimeInMillis();
