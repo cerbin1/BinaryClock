@@ -18,7 +18,7 @@ public class BinaryTest {
         List<Boolean> list;
 
         // when
-        list = Binary.changeToBinaryAndRevert(7, 4);
+        list = Binary.toBinary(7, 4);
 
         // then
         Boolean[] expected = {true, true, true, false};
@@ -31,7 +31,7 @@ public class BinaryTest {
         List<Boolean> list;
 
         // when
-        list = Binary.changeToBinaryAndRevert(7, 3);
+        list = Binary.toBinary(7, 3);
 
         // then
         Boolean[] expected = {true, true, true};
@@ -44,7 +44,7 @@ public class BinaryTest {
         List<Boolean> list;
 
         // when
-        list = Binary.changeToBinaryAndRevert(0, 4);
+        list = Binary.toBinary(0, 4);
 
         // then
         Boolean[] expected = {false, false, false, false};
@@ -59,7 +59,7 @@ public class BinaryTest {
 
         // when
 
-        Binary.changeToBinaryAndRevert(9, 2);
+        Binary.toBinary(9, 2);
 
     }
 
@@ -71,6 +71,6 @@ public class BinaryTest {
 
         // when
 
-        Binary.changeToBinaryAndRevert(1, 0);
+        Binary.toBinary(1, 0);
     }
 }
