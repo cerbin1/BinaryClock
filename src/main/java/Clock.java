@@ -1,5 +1,4 @@
 import java.util.Calendar;
-import java.util.List;
 
 import static java.util.Calendar.*;
 
@@ -28,22 +27,5 @@ public class Clock {
         c.set(MILLISECOND, 0);
         long passed = now - c.getTimeInMillis();
         return (int) (passed / 1000);
-    }
-
-    public List<Boolean> getFirstDigitHour() {
-        return Binary.toBinary(getPassedSecondsFromMidnight() / 36000, 3);
-    }
-
-    public List<Boolean> getSecondDigitHour() {
-        System.out.println(getPassedSecondsFromMidnight() / 3600 % 10);
-        return Binary.toBinary(getPassedSecondsFromMidnight() / 3600 % 10, 4);
-    }
-
-    public List<Boolean> getFirstDigitMinute() {
-        return Binary.toBinary(getPassedSecondsFromMidnight() % 3600 / 60 / 10, 3);
-    }
-
-    public List<Boolean> getSecondDigitMinute() {
-        return Binary.toBinary(getPassedSecondsFromMidnight() % 3600 / 60 % 10, 4);
     }
 }
