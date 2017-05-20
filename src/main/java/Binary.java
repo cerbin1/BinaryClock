@@ -3,6 +3,12 @@ import java.util.List;
 
 public class Binary {
     public static List<Boolean> toBinary(int digit, int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException();
+        }
+        if (Math.pow(2, size) < digit) {
+            throw new IllegalArgumentException();
+        }
         List<Boolean> binary = initializeArrayList(size);
         int i = 0;
         while (digit != 0) {
