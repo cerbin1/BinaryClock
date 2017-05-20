@@ -26,7 +26,7 @@ public class BinaryTest {
     }
 
     @Test
-    public void shouldChangeToBinaryWithUsingFullSize() {
+    public void shouldChangeToBinaryUsingWholeSize() {
         // given
         List<Boolean> list;
 
@@ -52,7 +52,7 @@ public class BinaryTest {
     }
 
     @Test
-    public void shouldThrowOnTakingNumberWithNotEnoughSizeOn() {
+    public void shouldThrowWhenSizeIsSmallerThanNeeded() {
         // given
 
         expectedException.expect(IllegalArgumentException.class);

@@ -9,7 +9,7 @@ public class Binary {
         if (Math.pow(2, size) < digit) {
             throw new IllegalArgumentException();
         }
-        List<Boolean> binary = initializeArrayList(size);
+        List<Boolean> binary = initialize(size);
         int i = 0;
         while (digit != 0) {
             binary.set(i, digit % 2 == 1);
@@ -19,7 +19,7 @@ public class Binary {
         return binary;
     }
 
-    private static List<Boolean> initializeArrayList(int size) {
+    private static List<Boolean> initialize(int size) {
         List<Boolean> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             list.add(i, false);
