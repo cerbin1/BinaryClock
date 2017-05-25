@@ -26,3 +26,5 @@ hs_err_pid*
 .idea/
 BinaryClock.iml
 out/
+.gradle/
+build/
