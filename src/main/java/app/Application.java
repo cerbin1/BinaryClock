@@ -1,9 +1,12 @@
 package app;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -24,6 +27,9 @@ public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
 
     private Label label = new Label();
+    private Button button = new Button();
+
+    private boolean displayNormalClock = true;
 
     public Application() {
         binaryClock = new BinaryClock();
@@ -41,9 +47,22 @@ public class Application extends javafx.application.Application {
         grid.add(label, 1, 4, 4, 1);
         label.setFont(new Font(60));
 
+        button.setText("Hide");
+        grid.add(button, 0, 5, 6, 1);
+        GridPane.setHalignment(button, HPos.CENTER);
+        button.setOnAction(getEventHandlerForDisplayClockButton());
+
         primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.setOnCloseRequest(getCloseOperation());
         primaryStage.show();
+    }
+
+    private EventHandler<ActionEvent> getEventHandlerForDisplayClockButton() {
+        return event -> {
+            button.setText((displayNormalClock ? "Hide" : "Display"));
+            displayNormalClock = !displayNormalClock;
+            label.setText((displayNormalClock ? getTime() : ""));
+        };
     }
 
     private GridPane createGrid() {
@@ -77,7 +96,8 @@ public class Application extends javafx.application.Application {
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                    label.setText(getTime());
+
+                    if (displayNormalClock) label.setText(getTime());
                 });
             }
         };
