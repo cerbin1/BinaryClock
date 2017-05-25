@@ -22,7 +22,7 @@ import java.util.TimerTask;
 import static app.ImageRepository.get;
 import static app.Time.getTime;
 import static javafx.geometry.Pos.CENTER;
-import static javafx.scene.layout.GridPane.*;
+import static javafx.scene.layout.GridPane.setHalignment;
 
 public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
@@ -63,6 +63,7 @@ public class Application extends javafx.application.Application {
     private void setNormalClockToggleButton(GridPane grid) {
         normalClockToggle.setText("Hide");
         grid.add(normalClockToggle, 0, 5, 6, 1);
+        normalClockToggle.setFont(new Font(13));
         setHalignment(normalClockToggle, HPos.CENTER);
         normalClockToggle.setOnAction(getEventHandlerForDisplayClockButton());
     }
