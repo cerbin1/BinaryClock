@@ -26,8 +26,8 @@ import static javafx.geometry.Pos.CENTER;
 public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
 
-    private Label label = new Label();
-    private Button button = new Button();
+    private Label normalClock = new Label();
+    private Button normalClockToggle = new Button();
 
     private boolean displayNormalClock = true;
 
@@ -44,13 +44,13 @@ public class Application extends javafx.application.Application {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(displayBinaryClock(grid), 0, 1000);
 
-        grid.add(label, 1, 4, 4, 1);
-        label.setFont(new Font(60));
+        grid.add(normalClock, 1, 4, 4, 1);
+        normalClock.setFont(new Font(60));
 
-        button.setText("Hide");
-        grid.add(button, 0, 5, 6, 1);
-        GridPane.setHalignment(button, HPos.CENTER);
-        button.setOnAction(getEventHandlerForDisplayClockButton());
+        normalClockToggle.setText("Hide");
+        grid.add(normalClockToggle, 0, 5, 6, 1);
+        GridPane.setHalignment(normalClockToggle, HPos.CENTER);
+        normalClockToggle.setOnAction(getEventHandlerForDisplayClockButton());
 
         primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.setOnCloseRequest(getCloseOperation());
@@ -59,9 +59,9 @@ public class Application extends javafx.application.Application {
 
     private EventHandler<ActionEvent> getEventHandlerForDisplayClockButton() {
         return event -> {
-            button.setText((displayNormalClock ? "Hide" : "Display"));
+            normalClockToggle.setText((displayNormalClock ? "Hide" : "Display"));
             displayNormalClock = !displayNormalClock;
-            label.setText((displayNormalClock ? getTime() : ""));
+            normalClock.setText((displayNormalClock ? getTime() : ""));
         };
     }
 
@@ -97,7 +97,7 @@ public class Application extends javafx.application.Application {
                         e.printStackTrace();
                     }
 
-                    if (displayNormalClock) label.setText(getTime());
+                    if (displayNormalClock) normalClock.setText(getTime());
                 });
             }
         };
