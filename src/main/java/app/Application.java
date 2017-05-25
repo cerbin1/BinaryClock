@@ -47,7 +47,7 @@ public class Application extends javafx.application.Application {
                             List clockDigit = clockDigits[i];
                             for (int j = 0; j < clockDigit.size(); j++) {
                                 ImageView imageView = new ImageView();
-                                if ((Boolean) clockDigit.get(j)) {
+                                if (clockDigit.get(j).equals(true)) {
                                     imageView.setImage(ImageRepository.get("1.png"));
                                 } else {
                                     imageView.setImage(ImageRepository.get("0.png"));
