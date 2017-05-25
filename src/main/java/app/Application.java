@@ -65,6 +65,10 @@ public class Application extends javafx.application.Application {
         label.setFont(new Font(60));
         setDisplayingTimeOn(label);
         primaryStage.setScene(new Scene(grid, 400, 400));
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
         primaryStage.show();
     }
 
