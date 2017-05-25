@@ -32,15 +32,15 @@ public class BinaryClock {
         return toBinary(secondPassed % 60 % 10, 4);
     }
 
-    public List[] getBinaryClock() {
+    public List[] getTime() {
         int secondsPassed = getPassedSecondsFromMidnight();
-        List[] clock = new ArrayList[6];
-        clock[0] = getFirstDigitHour(secondsPassed);
-        clock[1] = getSecondDigitHour(secondsPassed);
-        clock[2] = getFirstDigitMinute(secondsPassed);
-        clock[3] = getSecondDigitMinute(secondsPassed);
-        clock[4] = getFirstDigitSecond(secondsPassed);
-        clock[5] = getSecondDigitSecond(secondsPassed);
-        return clock;
+        List[] binaryTime = new ArrayList[6];
+        binaryTime[0] = getFirstDigitHour(secondsPassed);
+        binaryTime[1] = getSecondDigitHour(secondsPassed);
+        binaryTime[2] = getFirstDigitMinute(secondsPassed);
+        binaryTime[3] = getSecondDigitMinute(secondsPassed);
+        binaryTime[4] = getFirstDigitSecond(secondsPassed);
+        binaryTime[5] = getSecondDigitSecond(secondsPassed);
+        return binaryTime;
     }
 }
