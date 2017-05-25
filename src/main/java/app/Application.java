@@ -2,12 +2,10 @@ package app;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
 import java.util.List;
 
 import static javafx.geometry.Pos.CENTER;
@@ -35,9 +33,9 @@ public class Application extends javafx.application.Application {
             for (int j = 0; j < clockDigit.size(); j++) {
                 ImageView imageView = new ImageView();
                 if ((Boolean) clockDigit.get(j)) {
-                    imageView.setImage(new Image(new FileInputStream("C:\\Users\\bartek\\Desktop\\Projekty\\Java\\BinaryClock\\res\\1.png")));
+                    imageView.setImage(ImageRepository.get("1.png"));
                 } else {
-                    imageView.setImage(new Image(new FileInputStream("C:\\Users\\bartek\\Desktop\\Projekty\\Java\\BinaryClock\\res\\0.png")));
+                    imageView.setImage(ImageRepository.get("0.png"));
                 }
                 grid.add(imageView, i, 3 - j);
             }
