@@ -22,6 +22,7 @@ import java.util.TimerTask;
 import static app.ImageRepository.get;
 import static app.Time.getTime;
 import static javafx.geometry.Pos.CENTER;
+import static javafx.scene.layout.GridPane.*;
 
 public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
@@ -44,18 +45,26 @@ public class Application extends javafx.application.Application {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(displayBinaryClock(grid), 0, 1000);
 
-        grid.add(normalClock, 0, 4, 6, 1);
-        GridPane.setHalignment(normalClock, HPos.CENTER);
-        normalClock.setFont(new Font(60));
+        setNormalClockLabel(grid);
 
-        normalClockToggle.setText("Hide");
-        grid.add(normalClockToggle, 0, 5, 6, 1);
-        GridPane.setHalignment(normalClockToggle, HPos.CENTER);
-        normalClockToggle.setOnAction(getEventHandlerForDisplayClockButton());
+        setNormalClockToggleButton(grid);
 
         primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.setOnCloseRequest(getCloseOperation());
         primaryStage.show();
+    }
+
+    private void setNormalClockLabel(GridPane grid) {
+        grid.add(normalClock, 0, 4, 6, 1);
+        setHalignment(normalClock, HPos.CENTER);
+        normalClock.setFont(new Font(60));
+    }
+
+    private void setNormalClockToggleButton(GridPane grid) {
+        normalClockToggle.setText("Hide");
+        grid.add(normalClockToggle, 0, 5, 6, 1);
+        setHalignment(normalClockToggle, HPos.CENTER);
+        normalClockToggle.setOnAction(getEventHandlerForDisplayClockButton());
     }
 
     private EventHandler<ActionEvent> getEventHandlerForDisplayClockButton() {
