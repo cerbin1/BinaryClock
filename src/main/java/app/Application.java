@@ -44,7 +44,8 @@ public class Application extends javafx.application.Application {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(displayBinaryClock(grid), 0, 1000);
 
-        grid.add(normalClock, 1, 4, 4, 1);
+        grid.add(normalClock, 0, 4, 6, 1);
+        GridPane.setHalignment(normalClock, HPos.CENTER);
         normalClock.setFont(new Font(60));
 
         normalClockToggle.setText("Hide");
