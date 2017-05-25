@@ -20,6 +20,8 @@ import static javafx.geometry.Pos.CENTER;
 public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
 
+    private Label label = new Label();
+
     public Application() {
         binaryClock = new BinaryClock();
     }
@@ -27,8 +29,6 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Binary Time");
-
-        Label label = new Label();
 
         GridPane grid = new GridPane();
         grid.setAlignment(CENTER);
@@ -63,7 +63,7 @@ public class Application extends javafx.application.Application {
         }, 0, 1000);
         grid.add(label, 1, 4, 4, 1);
         label.setFont(new Font(60));
-        setDisplayingTimeOn(label);
+        setDisplayingTimeOn();
         primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.setOnCloseRequest(e -> {
             Platform.exit();
@@ -72,7 +72,7 @@ public class Application extends javafx.application.Application {
         primaryStage.show();
     }
 
-    private void setDisplayingTimeOn(Label label) {
+    private void setDisplayingTimeOn() {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
