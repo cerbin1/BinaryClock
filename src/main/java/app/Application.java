@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -15,6 +16,7 @@ import java.util.TimerTask;
 
 import static javafx.application.Platform.runLater;
 import static javafx.geometry.Pos.CENTER;
+import static javafx.scene.layout.GridPane.*;
 
 public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
@@ -60,7 +62,9 @@ public class Application extends javafx.application.Application {
                 });
             }
         }, 0, 1000);
-        grid.add(label, 4, 4);
+        grid.add(label, 0, 4);
+        setColumnSpan(label, REMAINING);
+        label.setFont(new Font(60));
         setDisplayingTimeOn(label);
         primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.show();
