@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import static org.junit.rules.ExpectedException.none;
 
-public class BinaryTest {
+public class BinaryConverterTest {
     @Rule
     public ExpectedException expectedException = none();
 
@@ -20,7 +20,7 @@ public class BinaryTest {
         List<Boolean> list;
 
         // when
-        list = Binary.toBinary(7, 4);
+        list = BinaryConverter.toBinary(7, 4);
 
         // then
         Boolean[] expected = {true, true, true, false};
@@ -33,7 +33,7 @@ public class BinaryTest {
         List<Boolean> list;
 
         // when
-        list = Binary.toBinary(7, 3);
+        list = BinaryConverter.toBinary(7, 3);
 
         // then
         Boolean[] expected = {true, true, true};
@@ -46,7 +46,7 @@ public class BinaryTest {
         List<Boolean> list;
 
         // when
-        list = Binary.toBinary(0, 4);
+        list = BinaryConverter.toBinary(0, 4);
 
         // then
         Boolean[] expected = {false, false, false, false};
@@ -61,7 +61,7 @@ public class BinaryTest {
 
         // when
 
-        Binary.toBinary(9, 2);
+        BinaryConverter.toBinary(9, 2);
 
     }
 
@@ -73,6 +73,6 @@ public class BinaryTest {
 
         // when
 
-        Binary.toBinary(1, 0);
+        BinaryConverter.toBinary(1, 0);
     }
 }

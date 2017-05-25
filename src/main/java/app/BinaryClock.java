@@ -3,7 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-import static app.Binary.*;
+import static app.BinaryConverter.*;
 import static app.Time.*;
 
 public class BinaryClock {

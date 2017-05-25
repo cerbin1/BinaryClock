@@ -3,7 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Binary {
+public class BinaryConverter {
     public static List<Boolean> toBinary(int digit, int size) {
         if (size <= 0) {
             throw new IllegalArgumentException();
