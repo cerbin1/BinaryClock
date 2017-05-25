@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static app.Binary.*;
-import static app.Clock.*;
+import static app.Time.*;
 
 public class BinaryClock {
 

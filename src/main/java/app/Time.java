@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import static java.util.Calendar.*;
 
-public class Clock {
+public class Time {
     public static String getTime() {
         Calendar c = getInstance();
         long now = c.getTimeInMillis();

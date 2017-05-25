@@ -26,7 +26,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Binary Clock");
+        primaryStage.setTitle("Binary Time");
 
         Label label = new Label();
 
@@ -77,7 +77,7 @@ public class Application extends javafx.application.Application {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                runLater(() -> label.setText(Clock.getTime()));
+                runLater(() -> label.setText(Time.getTime()));
             }
         }, 0, 1000);
     }
