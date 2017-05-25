@@ -16,7 +16,6 @@ import java.util.TimerTask;
 
 import static javafx.application.Platform.runLater;
 import static javafx.geometry.Pos.CENTER;
-import static javafx.scene.layout.GridPane.*;
 
 public class Application extends javafx.application.Application {
     private BinaryClock binaryClock;
@@ -62,8 +61,7 @@ public class Application extends javafx.application.Application {
                 });
             }
         }, 0, 1000);
-        grid.add(label, 0, 4);
-        setColumnSpan(label, REMAINING);
+        grid.add(label, 1, 4, 4, 1);
         label.setFont(new Font(60));
         setDisplayingTimeOn(label);
         primaryStage.setScene(new Scene(grid, 400, 400));
