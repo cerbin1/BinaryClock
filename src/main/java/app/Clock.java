@@ -17,7 +17,7 @@ public class Clock {
         long hours = secondsPassed / 3600;
         long minutes = secondsPassed % 3600 / 60;
         long seconds = secondsPassed % 60;
-        return "It is: " + hours + ":" + minutes + ":" + seconds;
+        return hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
     }
 
     public static int getPassedSecondsFromMidnight() {
