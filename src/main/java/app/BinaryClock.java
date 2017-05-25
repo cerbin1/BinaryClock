@@ -21,13 +21,23 @@ public class BinaryClock {
         return Binary.toBinary(secondPassed % 3600 / 60 % 10, 4);
     }
 
+    public List<Boolean> getFirstDigitSecond(int secondPassed) {
+        return Binary.toBinary(secondPassed % 60 / 10, 3);
+    }
+
+    public List<Boolean> getSecondDigitSecond(int secondPassed) {
+        return Binary.toBinary(secondPassed % 60 % 10, 4);
+    }
+
     public List[] getBinaryClock() {
         int secondsPassed = Clock.getPassedSecondsFromMidnight();
-        List[] clock = new ArrayList[4];
+        List[] clock = new ArrayList[6];
         clock[0] = getFirstDigitHour(secondsPassed);
         clock[1] = getSecondDigitHour(secondsPassed);
         clock[2] = getFirstDigitMinute(secondsPassed);
         clock[3] = getSecondDigitMinute(secondsPassed);
+        clock[4] = getFirstDigitSecond(secondsPassed);
+        clock[5] = getSecondDigitSecond(secondsPassed);
         return clock;
     }
 }
