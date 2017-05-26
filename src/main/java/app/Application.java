@@ -90,22 +90,22 @@ public class Application extends javafx.application.Application {
             @Override
             public void run() {
                 Platform.runLater(() -> {
-                    try {
-                        List[] timeDigits = binaryClock.getTime();
-                        for (int i = 0; i < timeDigits.length; i++) {
-                            List binaryDigit = timeDigits[i];
-                            for (int j = 0; j < binaryDigit.size(); j++) {
-                                ImageView imageView = new ImageView();
+                    List[] timeDigits = binaryClock.getTime();
+                    for (int i = 0; i < timeDigits.length; i++) {
+                        List binaryDigit = timeDigits[i];
+                        for (int j = 0; j < binaryDigit.size(); j++) {
+                            ImageView imageView = new ImageView();
+                            try {
                                 if (isBinaryOne(binaryDigit, j)) {
                                     imageView.setImage(get("1.png"));
                                 } else {
                                     imageView.setImage(get("0.png"));
                                 }
-                                grid.add(imageView, i, 3 - j);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
                             }
+                            grid.add(imageView, i, 3 - j);
                         }
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
                     }
 
                     if (displayNormalClock) normalClock.setText(getTime());
