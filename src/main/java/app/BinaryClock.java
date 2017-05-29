@@ -9,27 +9,35 @@ import static app.Time.getPassedSecondsFromMidnight;
 public class BinaryClock {
 
     public List<Boolean> getFirstDigitHour(int secondPassed) {
-        return toBinary(secondPassed / 36000, 2);
+        return toBinary(getTitheDigit(secondPassed / 3600), 2);
     }
 
     public List<Boolean> getSecondDigitHour(int secondPassed) {
-        return toBinary(secondPassed / 3600 % 10, 4);
+        return toBinary(getDigitOfUnity(secondPassed / 3600), 4);
     }
 
     public List<Boolean> getFirstDigitMinute(int secondPassed) {
-        return toBinary(secondPassed % 3600 / 60 / 10, 3);
+        return toBinary(getTitheDigit(secondPassed % 3600 / 60), 3);
     }
 
     public List<Boolean> getSecondDigitMinute(int secondPassed) {
-        return toBinary(secondPassed % 3600 / 60 % 10, 4);
+        return toBinary(getDigitOfUnity(secondPassed % 3600 / 60), 4);
     }
 
     public List<Boolean> getFirstDigitSecond(int secondPassed) {
-        return toBinary(secondPassed % 60 / 10, 3);
+        return toBinary(getTitheDigit(secondPassed % 60), 3);
     }
 
     public List<Boolean> getSecondDigitSecond(int secondPassed) {
-        return toBinary(secondPassed % 60 % 10, 4);
+        return toBinary(getDigitOfUnity(secondPassed % 60), 4);
+    }
+
+    private int getDigitOfUnity(int number) {
+        return number % 10;
+    }
+
+    private int getTitheDigit(int number) {
+        return number / 10;
     }
 
     public List<List<Boolean>> getTime() {
