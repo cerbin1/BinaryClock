@@ -24,16 +24,13 @@ import static javafx.geometry.Pos.CENTER;
 import static javafx.scene.layout.GridPane.setHalignment;
 
 public class Application extends javafx.application.Application {
-    private BinaryClock binaryClock;
+    private BinaryClock binaryClock = new BinaryClock();
 
     private Label normalClock = new Label();
     private Button normalClockToggle = new Button();
 
     private boolean displayNormalClock = true;
 
-    public Application() {
-        binaryClock = new BinaryClock();
-    }
 
     @Override
     public void start(Stage primaryStage) {
