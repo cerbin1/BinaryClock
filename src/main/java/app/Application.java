@@ -14,12 +14,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static app.ImageRepository.get;
+import static app.ImageLoader.get;
 import static app.Time.getTime;
 import static javafx.geometry.Pos.CENTER;
 import static javafx.scene.layout.GridPane.setHalignment;
@@ -90,19 +89,15 @@ public class Application extends javafx.application.Application {
             @Override
             public void run() {
                 Platform.runLater(() -> {
-                    List[] timeDigits = binaryClock.getTime();
-                    for (int i = 0; i < timeDigits.length; i++) {
-                        List binaryDigit = timeDigits[i];
+                    List<List<Boolean>> timeDigits = binaryClock.getTime();
+                    for (int i = 0; i < timeDigits.size(); i++) {
+                        List<Boolean> binaryDigit = timeDigits.get(i);
                         for (int j = 0; j < binaryDigit.size(); j++) {
                             ImageView imageView = new ImageView();
-                            try {
-                                if (isBinaryOne(binaryDigit, j)) {
-                                    imageView.setImage(get("1.png"));
-                                } else {
-                                    imageView.setImage(get("0.png"));
-                                }
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
+                            if (isBinaryOne(binaryDigit, j)) {
+                                imageView.setImage(get("1.png"));
+                            } else {
+                                imageView.setImage(get("0.png"));
                             }
                             grid.add(imageView, i, 3 - j);
                         }
@@ -114,7 +109,7 @@ public class Application extends javafx.application.Application {
         };
     }
 
-    private boolean isBinaryOne(List binaryDigit, int j) {
+    private boolean isBinaryOne(List<Boolean> binaryDigit, int j) {
         return binaryDigit.get(j).equals(true);
     }
 

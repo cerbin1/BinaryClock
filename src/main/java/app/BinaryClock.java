@@ -3,8 +3,8 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-import static app.BinaryConverter.*;
-import static app.Time.*;
+import static app.BinaryConverter.toBinary;
+import static app.Time.getPassedSecondsFromMidnight;
 
 public class BinaryClock {
 
@@ -32,15 +32,15 @@ public class BinaryClock {
         return toBinary(secondPassed % 60 % 10, 4);
     }
 
-    public List[] getTime() {
+    public List<List<Boolean>> getTime() {
         int secondsPassed = getPassedSecondsFromMidnight();
-        List[] binaryTime = new ArrayList[6];
-        binaryTime[0] = getFirstDigitHour(secondsPassed);
-        binaryTime[1] = getSecondDigitHour(secondsPassed);
-        binaryTime[2] = getFirstDigitMinute(secondsPassed);
-        binaryTime[3] = getSecondDigitMinute(secondsPassed);
-        binaryTime[4] = getFirstDigitSecond(secondsPassed);
-        binaryTime[5] = getSecondDigitSecond(secondsPassed);
+        List<List<Boolean>> binaryTime = new ArrayList<>(6);
+        binaryTime.add(getFirstDigitHour(secondsPassed));
+        binaryTime.add(getSecondDigitHour(secondsPassed));
+        binaryTime.add(getFirstDigitMinute(secondsPassed));
+        binaryTime.add(getSecondDigitMinute(secondsPassed));
+        binaryTime.add(getFirstDigitSecond(secondsPassed));
+        binaryTime.add(getSecondDigitSecond(secondsPassed));
         return binaryTime;
     }
 }
