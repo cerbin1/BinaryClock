@@ -6,29 +6,29 @@ import java.util.List;
 import static app.BinaryConverter.toBinary;
 import static app.Time.getPassedSecondsFromMidnight;
 
-public class BinaryClock {
+class BinaryClock {
 
-    public List<Boolean> getFirstDigitHour(int secondPassed) {
+    private List<Boolean> getFirstDigitHour(int secondPassed) {
         return toBinary(getTitheDigit(secondPassed / 3600), 2);
     }
 
-    public List<Boolean> getSecondDigitHour(int secondPassed) {
+    private List<Boolean> getSecondDigitHour(int secondPassed) {
         return toBinary(getDigitOfUnity(secondPassed / 3600), 4);
     }
 
-    public List<Boolean> getFirstDigitMinute(int secondPassed) {
+    private List<Boolean> getFirstDigitMinute(int secondPassed) {
         return toBinary(getTitheDigit(secondPassed % 3600 / 60), 3);
     }
 
-    public List<Boolean> getSecondDigitMinute(int secondPassed) {
+    private List<Boolean> getSecondDigitMinute(int secondPassed) {
         return toBinary(getDigitOfUnity(secondPassed % 3600 / 60), 4);
     }
 
-    public List<Boolean> getFirstDigitSecond(int secondPassed) {
+    private List<Boolean> getFirstDigitSecond(int secondPassed) {
         return toBinary(getTitheDigit(secondPassed % 60), 3);
     }
 
-    public List<Boolean> getSecondDigitSecond(int secondPassed) {
+    private List<Boolean> getSecondDigitSecond(int secondPassed) {
         return toBinary(getDigitOfUnity(secondPassed % 60), 4);
     }
 
@@ -40,7 +40,7 @@ public class BinaryClock {
         return number / 10;
     }
 
-    public List<List<Boolean>> getTime() {
+    List<List<Boolean>> getTime() {
         int secondsPassed = getPassedSecondsFromMidnight();
         List<List<Boolean>> binaryTime = new ArrayList<>(6);
         binaryTime.add(getFirstDigitHour(secondsPassed));

@@ -4,8 +4,8 @@ import java.util.Calendar;
 
 import static java.util.Calendar.*;
 
-public class Time {
-    public static String getTime() {
+class Time {
+    static String getTime() {
         int secondsPassed = getPassedSecondsFromMidnight();
         int hours = secondsPassed / 3600;
         int minutes = secondsPassed % 3600 / 60;
@@ -17,7 +17,7 @@ public class Time {
         return hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
     }
 
-    public static int getPassedSecondsFromMidnight() {
+    static int getPassedSecondsFromMidnight() {
         Calendar c = getInstance();
         long now = c.getTimeInMillis();
         c.set(HOUR_OF_DAY, 0);
