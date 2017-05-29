@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 import java.util.Arrays;
 import java.util.List;
 
+import static app.BinaryConverter.toBinary;
 import static org.junit.Assert.assertTrue;
 import static org.junit.rules.ExpectedException.none;
 
@@ -17,10 +18,11 @@ public class BinaryConverterTest {
     @Test
     public void shouldChangeToBinary() {
         // given
-        List<Boolean> list;
+        int digit = 7;
+        int size = 4;
 
         // when
-        list = BinaryConverter.toBinary(7, 4);
+        List<Boolean> list = toBinary(digit, size);
 
         // then
         Boolean[] expected = {true, true, true, false};
@@ -30,10 +32,11 @@ public class BinaryConverterTest {
     @Test
     public void shouldChangeToBinaryUsingWholeSize() {
         // given
-        List<Boolean> list;
+        int digit = 7;
+        int size = 3;
 
         // when
-        list = BinaryConverter.toBinary(7, 3);
+        List<Boolean> list = toBinary(digit, size);
 
         // then
         Boolean[] expected = {true, true, true};
@@ -43,10 +46,11 @@ public class BinaryConverterTest {
     @Test
     public void shouldChangeZeroNumberToBinary() {
         // given
-        List<Boolean> list;
+        int digit = 0;
+        int size = 4;
 
         // when
-        list = BinaryConverter.toBinary(0, 4);
+        List<Boolean> list = toBinary(digit, size);
 
         // then
         Boolean[] expected = {false, false, false, false};
@@ -61,8 +65,7 @@ public class BinaryConverterTest {
 
         // when
 
-        BinaryConverter.toBinary(9, 2);
-
+        toBinary(9, 2);
     }
 
     @Test
@@ -73,6 +76,6 @@ public class BinaryConverterTest {
 
         // when
 
-        BinaryConverter.toBinary(1, 0);
+        toBinary(1, 0);
     }
 }
