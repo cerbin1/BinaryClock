@@ -6,17 +6,17 @@ import org.junit.rules.ExpectedException;
 
 import java.io.FileNotFoundException;
 
-public class ImageRepositoryTest {
+public class ImageLoaderTest {
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void shouldThrowOnGettingUnexistingFile() throws FileNotFoundException {
         // given
-        expectedException.expect(FileNotFoundException.class);
+        expectedException.expect(RuntimeException.class);
 
         // when
 
-        ImageRepository.get("test");
+        ImageLoader.get("test");
     }
 }
