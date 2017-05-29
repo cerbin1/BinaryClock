@@ -24,10 +24,9 @@ import static javafx.geometry.Pos.CENTER;
 import static javafx.scene.layout.GridPane.setHalignment;
 
 public class Application extends javafx.application.Application {
-    private BinaryClock binaryClock = new BinaryClock();
-
-    private Label normalClock = new Label();
-    private Button normalClockToggle = new Button();
+    private final BinaryClock binaryClock = new BinaryClock();
+    private final Label normalClock = new Label();
+    private final Button normalClockToggle = new Button();
 
     private boolean displayNormalClock = true;
 
