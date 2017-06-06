@@ -1,6 +1,5 @@
 package app;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -20,7 +19,8 @@ import java.util.TimerTask;
 
 import static app.ImageLoader.get;
 import static app.Time.getTime;
-import static javafx.application.Platform.*;
+import static javafx.application.Platform.exit;
+import static javafx.application.Platform.runLater;
 import static javafx.geometry.Pos.CENTER;
 import static javafx.scene.layout.GridPane.setHalignment;
 
