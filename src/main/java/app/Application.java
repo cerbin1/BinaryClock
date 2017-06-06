@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 import static app.ImageLoader.get;
 import static app.Time.getTime;
+import static javafx.application.Platform.*;
 import static javafx.geometry.Pos.CENTER;
 import static javafx.scene.layout.GridPane.setHalignment;
 
@@ -84,7 +85,7 @@ public class Application extends javafx.application.Application {
         return new TimerTask() {
             @Override
             public void run() {
-                Platform.runLater(() -> {
+                runLater(() -> {
                     List<List<Boolean>> timeDigits = binaryClock.getTime();
                     for (int i = 0; i < timeDigits.size(); i++) {
                         List<Boolean> binaryDigit = timeDigits.get(i);
@@ -111,7 +112,7 @@ public class Application extends javafx.application.Application {
 
     private EventHandler<WindowEvent> getCloseOperation() {
         return e -> {
-            Platform.exit();
+            exit();
             System.exit(0);
         };
     }
