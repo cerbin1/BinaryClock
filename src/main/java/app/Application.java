@@ -4,17 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcType;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.util.List;
-import java.util.Timer;
 import java.util.TimerTask;
 
 import static app.ImageLoader.get;
@@ -31,23 +35,45 @@ public class Application extends javafx.application.Application {
 
     private boolean displayNormalClock = true;
 
+    private Canvas canvas;
+
 
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Binary Time");
 
-        GridPane grid = createGrid();
+        /*GridPane grid = createGrid();
 
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(displayBinaryClock(grid), 0, 1000);
 
         setNormalClockLabel(grid);
 
-        setNormalClockToggleButton(grid);
-
-        primaryStage.setScene(new Scene(grid, 400, 400));
+        setNormalClockToggleButton(grid);*/
+//        grid.add(canvas, 6, 0);
+        // dodac do grida  OBRAZEK ktory wczesnieij aktualizuje
+        /*primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.setOnCloseRequest(getCloseOperation());
+        primaryStage.show();*/
+        Group root = new Group();
+        root.getChildren().add(normalClock);
+        Canvas canvas = new Canvas(300, 250);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        root.getChildren().add(canvas);
+//        drawAnalogClock(gc);
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    private GridPane createGrid() {
+        GridPane grid = new GridPane();
+        grid.setAlignment(CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+        return grid;
     }
 
     private void setNormalClockLabel(GridPane grid) {
@@ -72,15 +98,6 @@ public class Application extends javafx.application.Application {
         };
     }
 
-    private GridPane createGrid() {
-        GridPane grid = new GridPane();
-        grid.setAlignment(CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-        return grid;
-    }
-
     private TimerTask displayBinaryClock(GridPane grid) {
         return new TimerTask() {
             @Override
@@ -100,10 +117,37 @@ public class Application extends javafx.application.Application {
                         }
                     }
 
+                    canvas = new Canvas(400, 400);
+                    GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+//                    drawAnalogClock(graphicsContext);
+
+
+                    // rysowanie w canvasie javafx
+
                     if (displayNormalClock) normalClock.setText(getTime());
                 });
             }
         };
+    }
+
+    private void drawAnalogClock(GraphicsContext graphicsContext) {
+        graphicsContext.setFill(Color.GREEN);
+        graphicsContext.setStroke(Color.BLUE);
+        graphicsContext.setLineWidth(5);
+        graphicsContext.strokeLine(40, 10, 10, 40);
+        graphicsContext.fillOval(10, 60, 30, 30);
+        graphicsContext.strokeOval(60, 60, 30, 30);
+        graphicsContext.fillRoundRect(110, 60, 30, 30, 10, 10);
+        graphicsContext.strokeRoundRect(160, 60, 30, 30, 10, 10);
+        graphicsContext.fillArc(10, 110, 30, 30, 45, 240, ArcType.OPEN);
+        graphicsContext.fillArc(60, 110, 30, 30, 45, 240, ArcType.CHORD);
+        graphicsContext.fillArc(110, 110, 30, 30, 45, 240, ArcType.ROUND);
+        graphicsContext.strokeArc(10, 160, 30, 30, 45, 240, ArcType.OPEN);
+        graphicsContext.strokeArc(60, 160, 30, 30, 45, 240, ArcType.CHORD);
+        graphicsContext.strokeArc(110, 160, 30, 30, 45, 240, ArcType.ROUND);
+        graphicsContext.fillPolygon(new double[]{10, 40, 10, 40}, new double[]{210, 210, 240, 240}, 4);
+        graphicsContext.strokePolygon(new double[]{60, 90, 60, 90}, new double[]{210, 210, 240, 240}, 4);
+        graphicsContext.strokePolyline(new double[]{110, 140, 110, 140}, new double[]{210, 210, 240, 240}, 4);
     }
 
     private boolean isBinaryOne(List<Boolean> binaryDigit, int j) {
@@ -111,7 +155,7 @@ public class Application extends javafx.application.Application {
     }
 
     private EventHandler<WindowEvent> getCloseOperation() {
-        return e -> {
+        return event -> {
             exit();
             System.exit(0);
         };
