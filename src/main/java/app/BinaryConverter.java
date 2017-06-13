@@ -8,7 +8,7 @@ class BinaryConverter {
         if (size <= 0) {
             throw new IllegalArgumentException();
         }
-        if (Math.pow(2, size) < digit) {
+        if (isNotEnoughSize(digit, size)) {
             throw new IllegalArgumentException();
         }
         List<Boolean> binary = initialize(size);
@@ -19,6 +19,10 @@ class BinaryConverter {
             i++;
         }
         return binary;
+    }
+
+    private static boolean isNotEnoughSize(int digit, int size) {
+        return Math.pow(2, size) < digit;
     }
 
     private static List<Boolean> initialize(int size) {
