@@ -12,10 +12,10 @@ class Time {
         int hours = secondsPassed / 3600;
         int minutes = secondsPassed % 3600 / 60;
         int seconds = secondsPassed % 60;
-        return getTimeInProperFormat(hours, minutes, seconds);
+        return getTimeInClassicFormat(hours, minutes, seconds);
     }
 
-    private static String getTimeInProperFormat(int hours, int minutes, int seconds) {
+    private static String getTimeInClassicFormat(int hours, int minutes, int seconds) {
         return hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
     }
 
