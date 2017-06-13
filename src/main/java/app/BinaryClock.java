@@ -6,7 +6,6 @@ import java.util.List;
 import static app.Time.*;
 
 class BinaryClock {
-
     List<List<Boolean>> getTime() {
         int secondsPassed = getPassedSecondsFromMidnight();
         List<List<Boolean>> binaryTime = new ArrayList<>(6);
