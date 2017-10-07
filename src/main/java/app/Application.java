@@ -85,29 +85,32 @@ public class Application extends javafx.application.Application {
             @Override
             public void run() {
                 runLater(() -> {
-                    List<List<Boolean>> timeDigits = binaryClock.getTime();
-                    for (int i = 0; i < timeDigits.size(); i++) {
-                        List<Boolean> binaryDigit = timeDigits.get(i);
-                        for (int j = 0; j < binaryDigit.size(); j++) {
-                            ImageView imageView = new ImageView();
-                            if (isBinaryOne(binaryDigit, j)) {
-                                imageView.setImage(get("1.png"));
-                            } else {
-                                imageView.setImage(get("0.png"));
-                            }
-                            grid.add(imageView, i, 3 - j);
-                        }
-                    }
+                    createBinaryClock();
 
-                    if (displayNormalClock) normalClock.setText(getTime());
+                    if (displayNormalClock) {
+                        normalClock.setText(getTime());
+                    }
                 });
+            }
+
+            private void createBinaryClock() {
+                List<List<Boolean>> timeDigits = binaryClock.getTime();
+                for (int col = 0; col < timeDigits.size(); col++) {
+                    List<Boolean> binaryDigit = timeDigits.get(col);
+                    for (int row = 0; row < binaryDigit.size(); row++) {
+                        ImageView imageView = new ImageView();
+                        imageView.setImage(isBinaryOne(binaryDigit, row) ? get("1.png") : get("0.png"));
+                        grid.add(imageView, col, 3 - row);
+                    }
+                }
+            }
+
+            private boolean isBinaryOne(List<Boolean> binaryDigit, int index) {
+                return binaryDigit.get(index).equals(true);
             }
         };
     }
 
-    private boolean isBinaryOne(List<Boolean> binaryDigit, int j) {
-        return binaryDigit.get(j).equals(true);
-    }
 
     private EventHandler<WindowEvent> getCloseOperation() {
         return event -> {
