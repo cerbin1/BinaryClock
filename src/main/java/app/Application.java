@@ -30,19 +30,20 @@ public class Application extends javafx.application.Application {
     private final Button normalClockToggle = new Button();
 
     private boolean displayNormalClock = true;
+    private GridPane grid;
 
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Binary Time");
 
-        GridPane grid = createGrid();
+        grid = createGrid();
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(displayBinaryClock(grid), 0, 1000);
+        timer.scheduleAtFixedRate(displayBinaryClock(), 0, 1000);
 
-        setNormalClockLabel(grid);
+        setNormalClockLabel();
 
-        setNormalClockToggleButton(grid);
+        setNormalClockToggleButton();
         primaryStage.setScene(new Scene(grid, 400, 400));
         primaryStage.setOnCloseRequest(getCloseOperation());
         primaryStage.show();
@@ -57,13 +58,13 @@ public class Application extends javafx.application.Application {
         return grid;
     }
 
-    private void setNormalClockLabel(GridPane grid) {
+    private void setNormalClockLabel() {
         grid.add(normalClock, 0, 4, 6, 1);
         setHalignment(normalClock, HPos.CENTER);
         normalClock.setFont(new Font(60));
     }
 
-    private void setNormalClockToggleButton(GridPane grid) {
+    private void setNormalClockToggleButton() {
         normalClockToggle.setText("Hide");
         grid.add(normalClockToggle, 0, 5, 6, 1);
         normalClockToggle.setFont(new Font(13));
@@ -79,7 +80,7 @@ public class Application extends javafx.application.Application {
         };
     }
 
-    private TimerTask displayBinaryClock(GridPane grid) {
+    private TimerTask displayBinaryClock() {
         return new TimerTask() {
             @Override
             public void run() {
