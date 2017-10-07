@@ -73,7 +73,7 @@ public class Application extends javafx.application.Application {
 
     private EventHandler<ActionEvent> getEventHandlerForDisplayClockButton() {
         return event -> {
-            normalClockToggle.setText((displayNormalClock ? "Hide" : "Display"));
+            normalClockToggle.setText((displayNormalClock ? "Display" : "Hide"));
             displayNormalClock = !displayNormalClock;
             normalClock.setText((displayNormalClock ? getTime() : ""));
         };
